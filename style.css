@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/*Classes*/
+ 
+.cabecalho {
+    background: #FFFFFF;
+    height: 80px;
+    display: flex;
+    justify-content: space-between; /*para distribuir itens em cada ponta*/
+    align-items: center; /*para ficar no centro verticalmente*/
+    margin-bottom: 26px;
+}
+
+.logo {
+    width: 75px;
+    height: 53px;
+    padding: 10px;
+}
+
+.vector {
+    width: 42.19px;
+    height: 30.94px;
+    padding: 10px;
+}
+
+.caixa {
+    background: #E5E5E5;
+}
+
+.caixa-dialogo {
+    width: 375px;
+    height: 40px;
+    background-color:  #FFFFFF;;
+    margin-bottom: 4px;
+}
+
+.entrar-sair {
+    background: #DCDCDC;
+}
+
+.barra-digitacao {
+    width: 375px;
+    height: 80px;
+    background: #FFFFFF;
+    position: fixed;
+    bottom: 0px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-digitacao > img {
+    width: 26px;
+    height: 26px;
+    padding: 10px;
+}
+
+.barra-digitacao > div {
+    padding: 10px;
+    font-style: italic;
+}
+
+/*Tags*/
+
+body {
+    width: 375px;
+    background: #E5E5E5;
+    font-family: 'Roboto', sans-serif;
+}
