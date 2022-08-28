@@ -28,11 +28,15 @@ function mostrarMensagens() {
     const url = 'https://mock-api.driven.com.br/api/v6/uol/messages';
     const resposta = axios.get(url);
     resposta.then(preencherCaixa);
+
+    setTimeout(mostrarMensagens, 1000);
 }
 
 function preencherCaixa(resposta) {
     let mensagens = resposta.data;
     let caixa = document.querySelector('.caixa');
+
+    caixa.innerHTML = '';
 
     for (let i = 0; i < mensagens.length; i++) {
 
@@ -51,7 +55,7 @@ function preencherCaixa(resposta) {
             caixa.innerHTML += `
                 <li class="caixa-dialogo">
                 <span class="tempo">(${mensagem.time})</span>
-                <b>${mensagem.from}</b> para <b>${mensagem.to}</b>
+                <b>${mensagem.from}</b> para <b>${mensagem.to}</b>:
                 ${mensagem.text}
                 </li>
             `;
@@ -59,7 +63,7 @@ function preencherCaixa(resposta) {
             caixa.innerHTML += `
                 <li class="caixa-dialogo privado">
                 <span class="tempo">(${mensagem.time})</span>
-                <b>${mensagem.from}</b> reservadamente para ${mensagem.to}
+                <b>${mensagem.from}</b> reservadamente para <b>${mensagem.to}</b>:
                 ${mensagem.text}
                 </li>
             `;
@@ -67,7 +71,9 @@ function preencherCaixa(resposta) {
     }
 }
 
-function enviarMensagens(text) {
+function enviarMensagens() {
+    let text = document.querySelector('.input').value;
+    document.querySelector('.input').value = '';
     const url = 'https://mock-api.driven.com.br/api/v6/uol/messages';
     const dados = {
         from: nome,
@@ -75,12 +81,7 @@ function enviarMensagens(text) {
         text: text,
         type: "message",
     };
-    const resposta = axios.post(url);
-
-}
-
-function botaoEnviarMensagem() {
-
+    const resposta = axios.post(url, dados);
 }
 
 entrarNaSala();
