@@ -14,6 +14,7 @@ function entrarNaSala() {
         manterConexao();
         mostrarMensagens();
     });
+    resposta.catch(deuErro);
 }
 
 function manterConexao() {
@@ -28,6 +29,8 @@ function mostrarMensagens() {
     const url = 'https://mock-api.driven.com.br/api/v6/uol/messages';
     const resposta = axios.get(url);
     resposta.then(preencherCaixa);
+    resposta.catch(deuErro);
+
 
     setTimeout(mostrarMensagens, 1000);
 }
@@ -82,6 +85,14 @@ function enviarMensagens() {
         type: "message",
     };
     const resposta = axios.post(url, dados);
+}
+
+function deuErro(erro){
+    console.log(erro.response.status);
+   
+    if (erro.response.status === 404) {
+        alert("Recurso não encontrado!")
+    }
 }
 
 entrarNaSala();
